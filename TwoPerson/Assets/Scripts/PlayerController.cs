@@ -49,4 +49,18 @@ public class PlayerController : MonoBehaviour
             grounded = true;
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // Testing purposes
+        if (collision.gameObject.CompareTag("Potato"))
+        {
+            Debug.Log("Colliding with Potato");
+
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                collision.GetComponent<PotatoBehavior>().AddHealth(-10f);
+            }
+        }
+    }
 }
