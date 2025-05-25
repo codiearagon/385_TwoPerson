@@ -21,6 +21,17 @@ public class PotatoBehavior : MonoBehaviour
         
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if(other.tag == "Enemy")
+        {
+            if (!other.GetComponent<EnemyBehavior>().isAttacking)
+            {
+                StartCoroutine(other.GetComponent<EnemyBehavior>().Attack());
+            }
+        }
+    }
+
     public void AddHealth(float amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);

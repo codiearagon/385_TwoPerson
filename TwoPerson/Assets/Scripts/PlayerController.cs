@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float jumpForce = 5.0f;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
 
     private Rigidbody2D rb;
     [SerializeField] private bool grounded = false;
