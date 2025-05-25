@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PotatoBehavior : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
+    [SerializeField] private TMP_Text healthText;
 
     [SerializeField] private float maxHealth;
     [SerializeField] private float health;
@@ -13,6 +15,7 @@ public class PotatoBehavior : MonoBehaviour
         health = maxHealth;
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
+        healthText.text = health + "/" + maxHealth;
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class PotatoBehavior : MonoBehaviour
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         healthBar.value = health;
+        healthText.text = health + "/" + maxHealth;
     }
 
 }
