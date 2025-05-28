@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int damage;
     [SerializeField] private float health;
+    [SerializeField] private bool isFlying;
 
     private Rigidbody2D rb;
     [SerializeField] private Transform potatoTarget;
@@ -17,7 +18,17 @@ public class EnemyBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), FindAnyObjectByType<PlayerController>().GetComponent<Collider2D>());
-        potatoTarget = FindAnyObjectByType<PotatoBehavior>().transform.GetChild(0);
+        
+        if(isFlying)
+        {
+            rb.gravityScale = 0; // Disable gravity for flying enemies
+            potatoTarget = FindAnyObjectByType<PotatoBehavior>().transform.GetChild(1);
+        }
+        else
+        {
+            rb.gravityScale = 1; // Enable gravity for ground enemies
+            potatoTarget = FindAnyObjectByType<PotatoBehavior>().transform.GetChild(0);
+        }
     }
 
     // Update is called once per frame

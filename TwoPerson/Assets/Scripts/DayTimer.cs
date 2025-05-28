@@ -9,6 +9,7 @@ public class DayTimer : MonoBehaviour
     
     private float dayLength = 10.0f; // day length in seconds
     private bool isDay;
+    private GameObject potato;
 
     void Start()
     {
@@ -26,6 +27,11 @@ public class DayTimer : MonoBehaviour
         GameManager.Instance.NextDay();
 
         StartCoroutine(Countdown());
+
+        if(potato.GetComponent<EnemySpawner>().spawnInterval > 2f)
+        {
+            potato.GetComponent<EnemySpawner>().spawnInterval -= 1f; // Decrease spawn interval for enemies
+        }
     }
 
     void DayEnd()

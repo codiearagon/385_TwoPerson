@@ -26,7 +26,7 @@ public class PotatoBehavior : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if(other.tag == "Enemy")
+        if(other.CompareTag("Enemy"))
         {
             if (!other.GetComponent<EnemyBehavior>().isAttacking)
             {
