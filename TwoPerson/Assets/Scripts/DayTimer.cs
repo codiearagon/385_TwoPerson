@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class DayTimer : MonoBehaviour
 {
     [SerializeField] private Slider dayTimer;
-    
+    [SerializeField] private GameObject potato;
+
+    private GameManager gameManager;
+
     private float dayLength = 10.0f; // day length in seconds
     private bool isDay;
-    private GameObject potato;
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         NewDay();
         
     }
@@ -24,7 +27,7 @@ public class DayTimer : MonoBehaviour
         dayTimer.maxValue = dayLength;
         dayTimer.value = 0;
 
-        GameManager.Instance.NextDay();
+        gameManager.NextDay();
 
         StartCoroutine(Countdown());
 

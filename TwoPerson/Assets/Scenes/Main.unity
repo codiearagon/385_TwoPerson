@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayTimer: {fileID: 2086188532}
+  potato: {fileID: 348261396}
 --- !u!4 &1173097
 Transform:
   m_ObjectHideFlags: 0
