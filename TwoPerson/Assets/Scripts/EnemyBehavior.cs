@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private int damage;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float health;
     [SerializeField] private bool isFlying;
 
@@ -16,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour
     public float attackCooldown; // Time in seconds before the enemy can attack again
     void Start()
     {
+        health = maxHealth;
+
         rb = GetComponent<Rigidbody2D>();
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), FindAnyObjectByType<PlayerController>().GetComponent<Collider2D>());
         
@@ -44,5 +47,18 @@ public class EnemyBehavior : MonoBehaviour
         potatoTarget.GetComponentInParent<PotatoBehavior>().AddHealth(-damage);
         yield return new WaitForSeconds(attackCooldown);
         isAttacking = false;
+    }
+
+    public void ChangeHealthBy(float amount)
+    {
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, sr.color.a - 1/health);
+
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

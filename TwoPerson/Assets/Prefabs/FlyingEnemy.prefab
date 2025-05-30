@@ -104,7 +104,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   damage: 1
-  health: 5
+  maxHealth: 5
+  health: 0
   isFlying: 1
   potatoTarget: {fileID: 0}
   isAttacking: 0

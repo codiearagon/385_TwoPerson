@@ -54,7 +54,7 @@ public class DayTimer : MonoBehaviour
             timer += 1;
             Debug.Log(timer);
 
-            if (timer >= 5f)
+            if (timer >= 2f)
             {
                 NewDay();
             }

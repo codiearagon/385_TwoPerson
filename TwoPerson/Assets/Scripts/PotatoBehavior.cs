@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PotatoBehavior : MonoBehaviour
@@ -40,6 +41,12 @@ public class PotatoBehavior : MonoBehaviour
         health = Mathf.Clamp(health + amount, 0, maxHealth);
         healthBar.value = health;
         healthText.text = health + "/" + maxHealth;
+
+        if(health <= 0)
+        {
+            GameManager.Instance.win = false;
+            SceneManager.LoadScene("End");
+        }
     }
 
 }
